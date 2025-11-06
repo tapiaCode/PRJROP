@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novedades - Comarapa Shop</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF4B91;
+            --secondary: #6A5AF9;
+            --accent: #FFB74D;
+            --dark: #333333;
+            --light: #F8F9FA;
+            --success: #4CAF50;
+            --warning: #FF9800;
+            --danger: #F44336;
+            --gray: #6C757D;
+            --white: #FFFFFF;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #e03a7f;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: #5849d6;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .header-top-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-top-left,
+        .header-top-right {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-main {
+            padding: 15px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            margin: 0;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 20px;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(255, 75, 145, 0.2);
+        }
+
+        .search-bar button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .search-bar button:hover {
+            background-color: #e03a7f;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header-action {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .header-action:hover {
+            color: var(--primary);
+        }
+
+        .header-action i {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .cart-count {
+            background-color: var(--danger);
+            color: var(--white);
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+
+        .cart-icon {
+            position: relative;
+        }
+
+        nav {
+            background-color: var(--white);
+            border-top: 1px solid #eee;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 15px 0;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, rgba(255, 75, 145, 0.9), rgba(106, 90, 249, 0.9)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .breadcrumb a {
+            transition: var(--transition);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--accent);
+        }
+
+        .breadcrumb span {
+            opacity: 0.7;
+        }
+
+        /* New Arrivals */
+        .new-arrivals {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .arrivals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .arrival-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .arrival-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .arrival-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            z-index: 1;
+        }
+
+        .arrival-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .arrival-info {
+            padding: 20px;
+        }
+
+        .arrival-category {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .arrival-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .arrival-description {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .arrival-date {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .arrival-date i {
+            color: var(--primary);
+        }
+
+        .arrival-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .arrival-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .view-product {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .view-product:hover {
+            background-color: #e03a7f;
+        }
+
+        /* Latest News */
+        .latest-news {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(255, 75, 145, 0.05), rgba(106, 90, 249, 0.05));
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .news-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .news-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .news-content {
+            padding: 25px;
+        }
+
+        .news-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .news-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .news-meta i {
+            color: var(--primary);
+        }
+
+        .news-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .news-excerpt {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: var(--primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+        }
+
+        .read-more:hover {
+            gap: 10px;
+        }
+
+        /* Trending Products */
+        .trending-products {
+            padding: 80px 0;
+        }
+
+        .trending-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .trending-product {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .trending-product:hover {
+            transform: translateY(-3px);
+        }
+
+        .trending-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .trending-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .trending-info {
+            padding: 15px;
+        }
+
+        .trending-product-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .trending-product-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .trending-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            text-align: center;
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+        }
+
+        .newsletter-form button {
+            background-color: var(--accent);
+            color: var(--dark);
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 30px 30px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background-color: #ffa726;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .contact-info i {
+            color: var(--primary);
+            margin-top: 3px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-wrap: wrap;
+            }
+
+            .search-bar {
+                order: 3;
+                margin: 15px 0 0;
+                max-width: 100%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .newsletter-form input,
+            .newsletter-form button {
+                border-radius: 30px;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-header {
+                padding: 60px 0;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .new-arrivals,
+            .latest-news,
+            .trending-products {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container header-top-content">
+                <div class="header-top-left">
+                    <span><i class="fas fa-phone"></i> +1 234 567 890</span>
+                    <span><i class="fas fa-envelope"></i> info@comarapashop.com</span>
+                </div>
+                <div class="header-top-right">
+                    <span>Envíos gratis en compras superiores a $50</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-main">
+            <div class="container header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <i class="fas fa-tshirt logo-icon"></i>
+                        <h1>Comarapa Shop</h1>
+                    </a>
+                </div>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Buscar productos...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+
+                <div class="header-actions">
+                    <div class="header-action">
+                        <i class="fas fa-user"></i>
+                        <span>Mi Cuenta</span>
+                    </div>
+                    <div class="header-action cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Carrito</span>
+                        <span class="cart-count">0</span>
+                    </div>
+                </div>
+
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <nav>
+            <div class="container">
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="mujeres.html">Mujer</a></li>
+                    <li><a href="varones.html">Hombre</a></li>
+                    <li><a href="ninos.html">Niños</a></li>
+                    <li><a href="novedades.html" class="active">Novedades</a></li>
+                    <li><a href="ofertas.html">Ofertas</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Novedades</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Inicio</a>
+                <span>/</span>
+                <span>Novedades</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Arrivals -->
+    <section class="new-arrivals">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuevos Lanzamientos</h2>
+                <p>Descubre las últimas incorporaciones a nuestra colección</p>
+            </div>
+
+            <div class="arrivals-grid">
+                <!-- Arrival 1 -->
+                <div class="arrival-card">
+                    <div class="arrival-badge">Nuevo</div>
+                    <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Colección Primavera 2023" class="arrival-img">
+                    <div class="arrival-info">
+                        <div class="arrival-category">Mujer</div>
+                        <h3 class="arrival-title">Colección Primavera 2023</h3>
+                        <p class="arrival-description">Descubre los vibrantes colores y diseños frescos de nuestra nueva
+                            colección de primavera.</p>
+                        <div class="arrival-date">
+                            <i class="far fa-calendar"></i>
+                            <span>Agregado: 15 Mar 2023</span>
+                        </div>
+                        <div class="arrival-actions">
+                            <span class="arrival-price">Desde $29.99</span>
+                            <button class="view-product">Ver Colección</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arrival 2 -->
+                <div class="arrival-card">
+                    <div class="arrival-badge">Nuevo</div>
+                    <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Línea Casual Hombre" class="arrival-img">
+                    <div class="arrival-info">
+                        <div class="arrival-category">Hombre</div>
+                        <h3 class="arrival-title">Línea Casual Hombre</h3>
+                        <p class="arrival-description">Nueva línea de ropa casual para hombre con materiales premium y
+                            diseños modernos.</p>
+                        <div class="arrival-date">
+                            <i class="far fa-calendar"></i>
+                            <span>Agregado: 12 Mar 2023</span>
+                        </div>
+                        <div class="arrival-actions">
+                            <span class="arrival-price">Desde $34.99</span>
+                            <button class="view-product">Ver Colección</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arrival 3 -->
+                <div class="arrival-card">
+                    <div class="arrival-badge">Nuevo</div>
+                    <img src="https://images.unsplash.com/photo-1503454532975-94d42e543ebf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Ropa Infantil Ecológica" class="arrival-img">
+                    <div class="arrival-info">
+                        <div class="arrival-category">Niños</div>
+                        <h3 class="arrival-title">Ropa Infantil Ecológica</h3>
+                        <p class="arrival-description">Nueva línea de ropa infantil fabricada con materiales 100%
+                            ecológicos y sostenibles.</p>
+                        <div class="arrival-date">
+                            <i class="far fa-calendar"></i>
+                            <span>Agregado: 10 Mar 2023</span>
+                        </div>
+                        <div class="arrival-actions">
+                            <span class="arrival-price">Desde $19.99</span>
+                            <button class="view-product">Ver Colección</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arrival 4 -->
+                <div class="arrival-card">
+                    <div class="arrival-badge">Nuevo</div>
+                    <img src="https://images.unsplash.com/photo-1542295669297-4d352b042bca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Accesorios de Temporada" class="arrival-img">
+                    <div class="arrival-info">
+                        <div class="arrival-category">Accesorios</div>
+                        <h3 class="arrival-title">Accesorios de Temporada</h3>
+                        <p class="arrival-description">Nueva colección de accesorios para complementar tus outfits de
+                            primavera-verano.</p>
+                        <div class="arrival-date">
+                            <i class="far fa-calendar"></i>
+                            <span>Agregado: 8 Mar 2023</span>
+                        </div>
+                        <div class="arrival-actions">
+                            <span class="arrival-price">Desde $14.99</span>
+                            <button class="view-product">Ver Colección</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest News -->
+    <section class="latest-news">
+        <div class="container">
+            <div class="section-title">
+                <h2>Últimas Noticias</h2>
+                <p>Mantente informado sobre las últimas tendencias y novedades</p>
+            </div>
+
+            <div class="news-grid">
+                <!-- News 1 -->
+                <div class="news-card">
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Tendencias Primavera-Verano 2023" class="news-img">
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar"></i> 20 Mar 2023</span>
+                            <span><i class="far fa-user"></i> Admin</span>
+                        </div>
+                        <h3 class="news-title">Tendencias Primavera-Verano 2023</h3>
+                        <p class="news-excerpt">Descubre las tendencias que dominarán esta temporada. Desde colores
+                            vibrantes hasta tejidos ligeros, te contamos todo lo que necesitas saber.</p>
+                        <a href="#" class="read-more">
+                            Leer más <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- News 2 -->
+                <div class="news-card">
+                    <img src="https://images.unsplash.com/photo-1558769132-cb25c5d4c7af?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Moda Sostenible" class="news-img">
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar"></i> 18 Mar 2023</span>
+                            <span><i class="far fa-user"></i> Admin</span>
+                        </div>
+                        <h3 class="news-title">El Futuro es Sostenible</h3>
+                        <p class="news-excerpt">Cómo la moda sostenible está transformando la industria. Conoce nuestras
+                            iniciativas ecológicas y materiales responsables.</p>
+                        <a href="#" class="read-more">
+                            Leer más <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- News 3 -->
+                <div class="news-card">
+                    <img src="https://images.unsplash.com/photo-1556906781-2a0b0b5b0b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Evento de Lanzamiento" class="news-img">
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar"></i> 15 Mar 2023</span>
+                            <span><i class="far fa-user"></i> Admin</span>
+                        </div>
+                        <h3 class="news-title">Evento Exclusivo de Lanzamiento</h3>
+                        <p class="news-excerpt">Te invitamos a nuestro evento especial donde presentaremos la nueva
+                            colección. Regalos, descuentos y sorpresas te esperan.</p>
+                        <a href="#" class="read-more">
+                            Leer más <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Products -->
+    <section class="trending-products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Productos en Tendencia</h2>
+                <p>Lo que más está gustando a nuestros clientes</p>
+            </div>
+
+            <div class="trending-grid">
+                <!-- Trending 1 -->
+                <div class="trending-product">
+                    <div class="trending-badge">Tendencia</div>
+                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Vestido Floral" class="trending-img">
+                    <div class="trending-info">
+                        <h3 class="trending-product-title">Vestido Floral Verano</h3>
+                        <div class="trending-product-price">
+                            <span class="current-price">$39.99</span>
+                            <span class="original-price">$49.99</span>
+                        </div>
+                        <div class="trending-actions">
+                            <button class="add-to-cart">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trending 2 -->
+                <div class="trending-product">
+                    <div class="trending-badge">Tendencia</div>
+                    <img src="https://images.unsplash.com/photo-1621072156002-e2fccdc0b176?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Jeans Hombre" class="trending-img">
+                    <div class="trending-info">
+                        <h3 class="trending-product-title">Jeans Slim Fit Hombre</h3>
+                        <div class="trending-product-price">
+                            <span class="current-price">$49.99</span>
+                            <span class="original-price">$59.99</span>
+                        </div>
+                        <div class="trending-actions">
+                            <button class="add-to-cart">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trending 3 -->
+                <div class="trending-product">
+                    <div class="trending-badge">Tendencia</div>
+                    <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Conjunto Niña" class="trending-img">
+                    <div class="trending-info">
+                        <h3 class="trending-product-title">Conjunto Niña Primavera</h3>
+                        <div class="trending-product-price">
+                            <span class="current-price">$24.99</span>
+                        </div>
+                        <div class="trending-actions">
+                            <button class="add-to-cart">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trending 4 -->
+                <div class="trending-product">
+                    <div class="trending-badge">Tendencia</div>
+                    <img src="https://images.unsplash.com/photo-1583496661160-fb5886a13d77?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Falda Midi" class="trending-img">
+                    <div class="trending-info">
+                        <h3 class="trending-product-title">Falda Midi Plisada</h3>
+                        <div class="trending-product-price">
+                            <span class="current-price">$32.99</span>
+                            <span class="original-price">$39.99</span>
+                        </div>
+                        <div class="trending-actions">
+                            <button class="add-to-cart">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container newsletter-content">
+            <h2>No Te Pierdas Nada</h2>
+            <p>Suscríbete y sé el primero en conocer nuestros nuevos lanzamientos y tendencias.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Tu correo electrónico" required>
+                <button type="submit">Suscribirse</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Comarapa Shop</h3>
+                    <p>Tu destino de moda para toda la familia. Ofrecemos las últimas tendencias en ropa para hombre,
+                        mujer y niños con la mejor calidad y precios.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="mujeres.html">Mujer</a></li>
+                        <li><a href="varones.html">Hombre</a></li>
+                        <li><a href="ninos.html">Niños</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Categorías</h3>
+                    <ul class="footer-links">
+                        <li><a href="novedades.html">Novedades</a></li>
+                        <li><a href="ofertas.html">Ofertas</a></li>
+                        <li><a href="#">Más Vendido</a></li>
+                        <li><a href="#">Colecciones</a></li>
+                        <li><a href="#">Tendencias</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Av. Moda 123, Ciudad Elegante</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+1 234 567 890</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@comarapashop.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Lun - Vie: 9:00 - 18:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2023 Comarapa Shop. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+
+            mobileMenuBtn.addEventListener('click', function () {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            });
+
+            // Adjust menu for window resize
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 768) {
+                    navLinks.style.display = 'flex';
+                } else {
+                    navLinks.style.display = 'none';
+                }
+            });
+
+            // Add to cart functionality
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const productTitle = this.closest('.trending-product').querySelector('.trending-product-title').textContent;
+                    const cartCount = document.querySelector('.cart-count');
+
+                    // Update cart count
+                    let currentCount = parseInt(cartCount.textContent);
+                    cartCount.textContent = currentCount + 1;
+
+                    // Show confirmation (in a real implementation, this would add to cart storage)
+                    alert(`¡${productTitle} añadido al carrito!`);
+                });
+            });
+
+            // View product functionality
+            const viewProductButtons = document.querySelectorAll('.view-product');
+
+            viewProductButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const productTitle = this.closest('.arrival-card').querySelector('.arrival-title').textContent;
+                    alert(`Redirigiendo a la colección: ${productTitle}`);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
